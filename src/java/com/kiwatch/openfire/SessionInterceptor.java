@@ -1,6 +1,6 @@
 package com.kiwatch.openfire;
 
-import java.util.Date;
+import java.time.ZonedDateTime;
 import java.util.function.BiConsumer;
 
 import org.jivesoftware.openfire.event.SessionEventListener;
@@ -34,13 +34,13 @@ public class SessionInterceptor implements SessionEventListener {
         manageSessionEvent(session, restClient::sendDisconnection);
     }
 
-    private void manageSessionEvent(final Session session, final BiConsumer<String, Date> sendFunction) {
+    private void manageSessionEvent(final Session session, final BiConsumer<String, ZonedDateTime> sendFunction) {
         String node = session.getAddress().getNode();
         Log.debug("manageSessionEvent id '{}', node '{}'", session.getStreamID().getID(), node);
         try {
             User userTo = userManager.getUser(node);
             Log.debug("manageSessionEvent id '{}', userTo '{}'", session.getStreamID().getID(), userTo.getUsername());
-            Date creationDate = session.getCreationDate();
+            ZonedDateTime creationDate = ZonedDateTime.now();
             sendFunction.accept(userTo.getUsername(), creationDate);
         } catch (UserNotFoundException e) {
             Log.info("can't find user with name: '{}', id '{}'", node, session.getStreamID().getID());

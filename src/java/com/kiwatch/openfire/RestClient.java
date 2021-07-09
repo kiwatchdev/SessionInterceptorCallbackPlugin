@@ -3,7 +3,7 @@ package com.kiwatch.openfire;
 import static com.kiwatch.openfire.Event.CONNECTION;
 import static com.kiwatch.openfire.Event.DISCONNECTION;
 
-import java.util.Date;
+import java.time.ZonedDateTime;
 import java.util.concurrent.Future;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.Entity;
@@ -24,17 +24,17 @@ public class RestClient {
         this.target = ClientBuilder.newClient().target(url);
     }
 
-    public void sendConnection(final String user, final Date date) {
+    public void sendConnection(final String user, final ZonedDateTime date) {
         Log.debug("sendConnection user '{}', date '{}'", user, date);
         sendRequest(user, date, CONNECTION);
     }
 
-    public void sendDisconnection(final String user, final Date date) {
+    public void sendDisconnection(final String user, final ZonedDateTime date) {
         Log.debug("sendDisconnection user '{}', date '{}'", user, date);
         sendRequest(user, date, DISCONNECTION);
     }
 
-    private void sendRequest(final String user, final Date date, final Event event) {
+    private void sendRequest(final String user, final ZonedDateTime date, final Event event) {
         Object[] parameters = { user, date, event };
         Log.debug("sendRequest user '{}', date '{}', event '{}'", parameters);
         ConnectionDto connectionDto = new ConnectionDto(user, date, event);
