@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin>
+    <!-- Main plugin class -->
+    <class>com.kiwatch.openfire.SessionInterceptorCallbackPlugin</class>
+
+    <name>SessionInterceptorCallbackPlugin</name>
+    <description>Url is called when user connects/disconnects</description>
+    <author>Nicolas Trichet (Kiwatch)</author>
+    <version>${project.version}</version>
+    <date>08/07/2021</date>
+    <minServerVersion>4.0.0</minServerVersion>
+
+</plugin>
