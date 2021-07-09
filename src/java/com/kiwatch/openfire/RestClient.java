@@ -37,11 +37,11 @@ public class RestClient {
     private void sendRequest(final String user, final ZonedDateTime date, final Event event) {
         Object[] parameters = { user, date, event };
         Log.debug("sendRequest user '{}', date '{}', event '{}'", parameters);
-        ConnectionDto connectionDto = new ConnectionDto(user, date, event);
+        SessionEventDto sessionEventDto = new SessionEventDto(user, date, event);
         Future<Response> responseFuture = target
             .request()
             .async()
-            .post(Entity.json(connectionDto));
+            .post(Entity.json(sessionEventDto));
         try {
             Response response = responseFuture.get();
             if (response.getStatus() >= HttpStatus.SC_BAD_REQUEST) {

@@ -5,13 +5,13 @@ import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
-public class ConnectionDto {
+public class SessionEventDto {
 
     private final String username;
     private final ZonedDateTime date;
     private final Event event;
 
-    public ConnectionDto(final String username, final ZonedDateTime date, final Event event) {
+    public SessionEventDto(final String username, final ZonedDateTime date, final Event event) {
         this.username = username;
         this.date = date;
         this.event = event;
