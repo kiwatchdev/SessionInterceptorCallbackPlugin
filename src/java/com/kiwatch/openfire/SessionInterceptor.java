@@ -18,10 +18,10 @@ public class SessionInterceptor implements SessionEventListener {
     private final UserManager userManager;
     private final RestClient restClient;
 
-    public SessionInterceptor(final String url) {
+    public SessionInterceptor(final String url, final String user, final String password) {
         Log.debug("Instantiate {}", SessionInterceptor.class.getSimpleName());
         this.userManager = UserManager.getInstance();
-        this.restClient = new RestClient(url);
+        this.restClient = new RestClient(url, user, password);
     }
 
     @Override public void sessionCreated(final Session session) {

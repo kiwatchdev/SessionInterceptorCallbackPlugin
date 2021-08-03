@@ -30,6 +30,8 @@
 * Run/Debug Openfire configuration
 * Generate plugin jar `mvn clean package`
 * In Openfire admin UI, import plugin assembly jar generated into folder `target`
+* Add System property `plugin.session_interceptor.basic_auth_user`
+* Add System property `plugin.session_interceptor.basic_auth_password`
 * Add System property `plugin.session_interceptor.url`
   * Session connections/disconnections are sent to this url
   * Json payload :
